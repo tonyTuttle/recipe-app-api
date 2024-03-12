@@ -16,16 +16,16 @@ class AdminSiteTests(TestCase):
 
     def test_users_list(self):
         url = reverse("admin:core_user_changelist")
-        result = self.client.get(url)
-        self.assertContains(result, self.user.name)
-        self.assertContains(result, self.user.email)
+        response = self.client.get(url)
+        self.assertContains(response, self.user.name)
+        self.assertContains(response, self.user.email)
 
     def test_edit_user_page(self):
         url = reverse("admin:core_user_change", args=[self.user.id])
-        result = self.client.get(url)
-        self.assertEqual(result.status_code, 200)
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
     def test_create_user_page(self):
         url = reverse("admin:core_user_add")
-        result = self.client.get(url)
-        self.assertEqual(result.status_code, 200)
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
