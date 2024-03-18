@@ -43,6 +43,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """
         Convert a comma separated string of integers to a list of integers
         """
+
         return [int(s) for s in str_.split(",")]
 
     def get_queryset(self):
